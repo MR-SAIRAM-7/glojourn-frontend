@@ -6,14 +6,45 @@
 
 :root {
   /* New Design Config */
-  --primary-navy: #001F3F;
+  --primary-navy: #0B132B;
   --accent-gold: #FFD700;
   --accent-gold-dim: #D4B200;
-  --highlight-teal: #008080;
+  --highlight-teal: #0B132B;
   --pure-white: #FFFFFF;
   --off-white: #F9F9F9;
   --text-dark: #333333;
   --text-light: #E0E0E0;
+
+  /* Shadcn/Tailwind Variables (HSL) */
+  --background: 0 0% 100%; /* White */
+  --foreground: 0 0% 20%; /* Charcoal */
+
+  --card: 0 0% 100%; /* White */
+  --card-foreground: 0 0% 20%; /* Charcoal */
+
+  --popover: 0 0% 100%; /* White */
+  --popover-foreground: 0 0% 20%; /* Charcoal */
+
+  --primary: 225 59% 11%; /* Midnight Navy */
+  --primary-foreground: 0 0% 100%; /* White */
+
+  --secondary: 210 40% 96.1%;
+  --secondary-foreground: 222.2 47.4% 11.2%;
+
+  --muted: 210 40% 96.1%;
+  --muted-foreground: 215.4 16.3% 46.9%;
+
+  --accent: 210 40% 96.1%;
+  --accent-foreground: 222.2 47.4% 11.2%;
+
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 210 40% 98%;
+
+  --border: 214.3 31.8% 91.4%;
+  --input: 214.3 31.8% 91.4%;
+  --ring: 225 59% 11%; /* Match primary */
+
+  --radius: 0.5rem;
 
   --font-head: 'Playfair Display', serif;
   --font-body: 'Montserrat', sans-serif;
@@ -47,7 +78,7 @@ h2,
 h3,
 h4 {
   font-family: var(--font-head);
-  font-weight: 700;
+  font-weight: 600;
   line-height: 1.2;
 }
 

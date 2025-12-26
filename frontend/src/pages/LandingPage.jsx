@@ -162,8 +162,8 @@ const LandingPage = () => {
         <div className="hero-bg" id="parallax-bg" aria-hidden="true" />
         <div className="hero-overlay" aria-hidden="true" />
         <div className="hero-content">
-          <h1 id="hero-heading" className="hero-title">
-            Unlock Your global journey</h1>
+          <h2 id="hero-heading" className="hero-title">
+            Turning borders into beginnings</h2>
           <p>From visa applications to seamless relocations, trust our 20+ years of expertise to navigate your path abroad. The world is waiting.</p>
           <button onClick={() => navigate("/signup")} className="btn-custom btn-primary-custom">Start Your Consultation</button>
         </div>

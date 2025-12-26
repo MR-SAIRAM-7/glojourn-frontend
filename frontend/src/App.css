@@ -1,7 +1,7 @@
 /* Glojourn Custom Styles */
 
 .hero-gradient {
-  background: linear-gradient(135deg, #0F172A 0%, #1e293b 50%, #134e4a 100%);
+  background: linear-gradient(135deg, #0B132B 0%, #1B264F 50%, #0B132B 100%);
 }
 
 .glass-card {
@@ -36,11 +36,11 @@
 
 /* Dashboard sidebar */
 .sidebar-link {
-  @apply flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-50 hover:text-teal-700 rounded-sm transition-all duration-200;
+  @apply flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-50 hover:text-primary rounded-sm transition-all duration-200;
 }
 
 .sidebar-link.active {
-  @apply bg-teal-50 text-teal-700 font-medium;
+  @apply bg-slate-100 text-primary font-medium;
 }
 
 /* Card hover effects */
@@ -50,16 +50,16 @@
 
 /* Form inputs */
 .form-input {
-  @apply h-12 bg-slate-50 border-slate-200 focus:border-teal-600 focus:ring-1 focus:ring-teal-600 transition-all duration-200 rounded-sm px-4;
+  @apply h-12 bg-slate-50 border-slate-200 focus:border-primary focus:ring-1 focus:ring-primary transition-all duration-200 rounded-sm px-4;
 }
 
 /* Button styles */
 .btn-primary {
-  @apply bg-slate-900 text-white hover:bg-teal-700 px-8 py-3 text-sm font-medium tracking-wide transition-all duration-300 shadow-lg shadow-slate-900/20 rounded-sm;
+  @apply bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-3 text-sm font-medium tracking-wide transition-all duration-300 shadow-lg shadow-primary/20 rounded-sm;
 }
 
 .btn-secondary {
-  @apply bg-white text-slate-900 border border-slate-200 hover:border-slate-900 px-8 py-3 text-sm font-medium tracking-wide transition-all duration-300 rounded-sm;
+  @apply bg-white text-primary border border-slate-200 hover:border-primary px-8 py-3 text-sm font-medium tracking-wide transition-all duration-300 rounded-sm;
 }
 
 /* Timeline styles */
@@ -74,5 +74,5 @@
 }
 
 .timeline-item.active::before {
-  background: #0d9488;
+  background: #0B132B;
 }
