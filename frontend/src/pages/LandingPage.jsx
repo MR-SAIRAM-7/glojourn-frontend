@@ -20,7 +20,8 @@ import {
   InstagramLogo,
   Phone,
   Envelope,
-  MapPin
+  MapPin,
+  Info
 } from "@phosphor-icons/react";
 import {
   Carousel,
@@ -165,7 +166,7 @@ const LandingPage = () => {
           <h2 id="hero-heading" className="hero-title">
             Turning borders into beginnings</h2>
           <p>From visa applications to seamless relocations, trust our 20+ years of expertise to navigate your path abroad. The world is waiting.</p>
-          <button onClick={() => navigate("/signup")} className="btn-custom btn-primary-custom">Start Your Consultation</button>
+          <button onClick={() => navigate("/login")} className="btn-custom btn-primary-custom">Start Your Consultation</button>
         </div>
       </section>
 
@@ -190,7 +191,7 @@ const LandingPage = () => {
           <div className="section-header reveal-on-scroll">
             <span>Our Expertise</span>
             <h2>Comprehensive Immigration Solutions</h2>
-            <p>We handle the bureaucracy so you can focus on the adventure.</p>
+            <p>Our informational resources cover major immigration pathways. For personalized legal guidance, please book a professional consultation.</p>
           </div>
 
           <div className="services-grid">
@@ -235,8 +236,17 @@ const LandingPage = () => {
                 <li>School Search</li>
                 <li>Banking & Healthcare Setup</li>
               </ul>
-              <a href="#" className="learn-more">Settle In →</a>
+              <a href="/login" className="learn-more">Settle In →</a>
             </article>
+          </div>
+
+          <div className="mt-16 text-center reveal-on-scroll">
+            <button
+              onClick={() => navigate("/login")}
+              className="btn-custom btn-primary-custom px-12 py-4 shadow-xl shadow-teal-500/20"
+            >
+              Book a Professional Assessment
+            </button>
           </div>
         </div>
       </section>
@@ -354,23 +364,22 @@ const LandingPage = () => {
             </div>
 
             <div className="footer-col">
-              <h4>Stay Updated</h4>
-              <p style={{ fontSize: "0.85rem", marginBottom: "0.5rem" }}>Immigration news delivered to your inbox.</p>
-              <form
-                className="newsletter-form"
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  toast.success("Subscribed!");
-                }}
-              >
-                <input type="email" placeholder="Email Address" required aria-label="Email for newsletter" />
-                <button type="submit" className="btn-custom btn-primary-custom" style={{ padding: "0.5rem 1rem" }}>Go</button>
-              </form>
+              <h4>Regulatory</h4>
+              <ul className="footer-links">
+                <li><a onClick={() => navigate("/disclaimer")} className="cursor-pointer">Legal Disclaimer</a></li>
+                <li><a onClick={() => navigate("/privacy-policy")} className="cursor-pointer">Privacy Policy</a></li>
+                <li><a onClick={() => navigate("/terms-of-service")} className="cursor-pointer">Terms of Service</a></li>
+                <li><a onClick={() => navigate("/login")} className="cursor-pointer">Sitemap</a></li>
+              </ul>
             </div>
           </div>
 
+          <div className="mt-12 py-6 border-t border-white/5 text-center text-[10px] text-gray-500 uppercase tracking-widest reveal-on-scroll">
+            <p>GloJourn is an immigration consulting firm. We provide informational and case management services. We are not a law firm and do not provide legal advice. All services are subject to our terms and conditions.</p>
+          </div>
+
           <div className="copyright">
-            <p>&copy; 2025 GloJourn Inc. All Rights Reserved. | Privacy Policy | Terms of Service</p>
+            <p>&copy; 2025 GloJourn Inc. All Rights Reserved. | <span className="cursor-pointer hover:text-white" onClick={() => navigate("/privacy-policy")}>Privacy Policy</span> | <span className="cursor-pointer hover:text-white" onClick={() => navigate("/terms-of-service")}>Terms of Service</span></p>
           </div>
         </div>
       </footer>

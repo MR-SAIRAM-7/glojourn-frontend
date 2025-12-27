@@ -16,6 +16,9 @@ const ClientDashboard = lazy(() => import("@/pages/ClientDashboard"));
 const CoordinatorDashboard = lazy(() => import("@/pages/CoordinatorDashboard"));
 const ManagerDashboard = lazy(() => import("@/pages/ManagerDashboard"));
 const AdminDashboard = lazy(() => import("@/pages/AdminDashboard"));
+const PrivacyPolicy = lazy(() => import("@/pages/PrivacyPolicy"));
+const TermsOfService = lazy(() => import("@/pages/TermsOfService"));
+const DisclaimerPage = lazy(() => import("@/pages/DisclaimerPage"));
 
 // Loading Component
 const PageLoader = () => (
@@ -77,6 +80,9 @@ function App() {
                   <AdminDashboard />
                 </ProtectedRoute>
               } />
+              <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+              <Route path="/terms-of-service" element={<TermsOfService />} />
+              <Route path="/disclaimer" element={<DisclaimerPage />} />
             </Routes>
           </Suspense>
         </BrowserRouter>
