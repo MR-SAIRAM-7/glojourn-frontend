@@ -15,7 +15,7 @@ const SignupPage = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [role, setRole] = useState("client");
+  const [accountType, setAccountType] = useState("individual");
   const [loading, setLoading] = useState(false);
 
   // Redirect if already logged in
@@ -41,7 +41,8 @@ const SignupPage = () => {
     }
     setLoading(true);
     try {
-      const userData = await signup(email, password, name, role);
+      // For now mapping both individual and company to 'client' role
+      const userData = await signup(email, password, name, "client");
       toast.success(`Welcome to Glojourn, ${userData.name}!`);
       const path = userData.role === "client" ? "/dashboard" :
         userData.role === "coordinator" ? "/coordinator" :
@@ -97,11 +98,23 @@ const SignupPage = () => {
             <CardContent>
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="space-y-2">
-                  <Label htmlFor="name">Full Name</Label>
+                  <Label htmlFor="accountType">Account Type</Label>
+                  <Select value={accountType} onValueChange={setAccountType}>
+                    <SelectTrigger className="h-12 bg-slate-50" data-testid="signup-account-type-select">
+                      <SelectValue placeholder="Select account type" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="individual">Individual</SelectItem>
+                      <SelectItem value="company">Company</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="name">{accountType === 'company' ? 'Company Name' : 'Full Name'}</Label>
                   <Input
                     id="name"
                     type="text"
-                    placeholder="John Doe"
+                    placeholder={accountType === 'company' ? "Acme Corp" : "John Doe"}
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     className="h-12 bg-slate-50"
@@ -131,20 +144,6 @@ const SignupPage = () => {
                     className="h-12 bg-slate-50"
                     data-testid="signup-password-input"
                   />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="role">Account Type</Label>
-                  <Select value={role} onValueChange={setRole}>
-                    <SelectTrigger className="h-12 bg-slate-50" data-testid="signup-role-select">
-                      <SelectValue placeholder="Select role" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="client">Client (Visa Applicant)</SelectItem>
-                      <SelectItem value="coordinator">Coordinator</SelectItem>
-                      <SelectItem value="manager">Manager</SelectItem>
-                      <SelectItem value="admin">Admin</SelectItem>
-                    </SelectContent>
-                  </Select>
                 </div>
                 <Button
                   type="submit"

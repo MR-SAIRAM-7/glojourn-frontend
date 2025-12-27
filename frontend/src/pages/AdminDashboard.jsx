@@ -10,9 +10,13 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import {
   Globe, LayoutDashboard, Users, FileText, Calendar, LogOut, Loader2, User,
-  TrendingUp, CheckCircle2, Clock, AlertCircle, BarChart3
+  TrendingUp, CheckCircle2, Clock, AlertCircle, BarChart3, Plus
 } from "lucide-react";
 import { toast } from "sonner";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger, DialogFooter } from "@/components/ui/dialog";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 
 const AdminDashboard = () => {
   const navigate = useNavigate();
@@ -21,10 +25,29 @@ const AdminDashboard = () => {
   const [users, setUsers] = useState([]);
   const [sessions, setSessions] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [isCreateUserOpen, setIsCreateUserOpen] = useState(false);
+  const [newUser, setNewUser] = useState({ name: "", email: "", password: "", role: "coordinator" });
+  const [createLoading, setCreateLoading] = useState(false);
 
   useEffect(() => {
     fetchData();
   }, []);
+
+  const handleCreateUser = async (e) => {
+    e.preventDefault();
+    setCreateLoading(true);
+    try {
+      await apiClient.post("/auth/signup", newUser);
+      toast.success("Team member created successfully");
+      setIsCreateUserOpen(false);
+      setNewUser({ name: "", email: "", password: "", role: "coordinator" });
+      fetchData(); // Refresh list
+    } catch (error) {
+      toast.error(error.response?.data?.detail || "Failed to create user");
+    } finally {
+      setCreateLoading(false);
+    }
+  };
 
   const fetchData = async () => {
     try {
@@ -288,11 +311,85 @@ const AdminDashboard = () => {
 
           <TabsContent value="team">
             <Card className="border-slate-200">
-              <CardHeader>
+              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                 <CardTitle className="flex items-center gap-2">
                   <Users className="w-5 h-5 text-teal-600" />
                   Team Members
                 </CardTitle>
+                <Dialog open={isCreateUserOpen} onOpenChange={setIsCreateUserOpen}>
+                  <DialogTrigger asChild>
+                    <Button className="bg-teal-600 hover:bg-teal-700 h-9">
+                      <Plus className="w-4 h-4 mr-2" />
+                      Add Member
+                    </Button>
+                  </DialogTrigger>
+                  <DialogContent>
+                    <DialogHeader>
+                      <DialogTitle>Add Team Member</DialogTitle>
+                      <DialogDescription>
+                        Create a new account for a coordinator or manager.
+                      </DialogDescription>
+                    </DialogHeader>
+                    <form onSubmit={handleCreateUser} className="space-y-4 py-4">
+                      <div className="space-y-2">
+                        <Label htmlFor="new-name">Name</Label>
+                        <Input
+                          id="new-name"
+                          value={newUser.name}
+                          onChange={(e) => setNewUser({ ...newUser, name: e.target.value })}
+                          placeholder="Jane Doe"
+                          required
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="new-email">Email</Label>
+                        <Input
+                          id="new-email"
+                          type="email"
+                          value={newUser.email}
+                          onChange={(e) => setNewUser({ ...newUser, email: e.target.value })}
+                          placeholder="jane@glojourn.com"
+                          required
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="new-password">Password</Label>
+                        <Input
+                          id="new-password"
+                          type="password"
+                          value={newUser.password}
+                          onChange={(e) => setNewUser({ ...newUser, password: e.target.value })}
+                          placeholder="********"
+                          required
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="new-role">Role</Label>
+                        <Select
+                          value={newUser.role}
+                          onValueChange={(val) => setNewUser({ ...newUser, role: val })}
+                        >
+                          <SelectTrigger>
+                            <SelectValue placeholder="Select role" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="coordinator">Coordinator</SelectItem>
+                            <SelectItem value="manager">Manager</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
+                      <DialogFooter>
+                        <Button type="button" variant="outline" onClick={() => setIsCreateUserOpen(false)}>
+                          Cancel
+                        </Button>
+                        <Button type="submit" className="bg-teal-600 hover:bg-teal-700" disabled={createLoading}>
+                          {createLoading && <Loader2 className="w-4 h-4 mr-2 animate-spin" />}
+                          Create Account
+                        </Button>
+                      </DialogFooter>
+                    </form>
+                  </DialogContent>
+                </Dialog>
               </CardHeader>
               <CardContent>
                 {users.length > 0 ? (
