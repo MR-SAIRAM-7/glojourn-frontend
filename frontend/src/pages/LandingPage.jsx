@@ -20,8 +20,7 @@ import {
   InstagramLogo,
   Phone,
   Envelope,
-  MapPin,
-  Info
+  MapPin
 } from "@phosphor-icons/react";
 import {
   Carousel,
