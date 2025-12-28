@@ -50,7 +50,7 @@ const LandingPage = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
 
-  // Redirect if already logged in
+  
   // Redirect if already logged in
   useEffect(() => {
     if (user) {
