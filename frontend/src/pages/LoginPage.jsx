@@ -48,7 +48,7 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 flex">
+    <div className="min-h-screen bg-background text-foreground flex">
       {/* Left Panel - Branding */}
       <div className="hidden lg:flex lg:w-1/2 hero-gradient items-center justify-center p-12 relative">
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1565688527174-775059ac429c?w=1920')] bg-cover bg-center opacity-10"></div>
@@ -70,19 +70,19 @@ const LoginPage = () => {
       <div className="flex-1 flex items-center justify-center p-6 md:p-12">
         <div className="w-full max-w-md">
           <Button
-            variant="ghost"
+            variant="outline"
             onClick={() => navigate("/")}
-            className="mb-8 text-slate-600 hover:text-slate-900"
+            className="mb-8 border border-border/70 text-foreground hover:border-[var(--accent-teal)] hover:bg-[var(--accent-teal)]/10 hover:text-white"
             data-testid="back-to-home-btn"
           >
             <ArrowLeft className="w-4 h-4 mr-2" /> Back to Home
           </Button>
 
-          <Card className="border-slate-200 shadow-lg">
+          <Card className="border border-border/70 bg-card text-card-foreground shadow-lg shadow-black/30">
             <CardHeader className="space-y-1">
               <div className="lg:hidden flex items-center gap-2 mb-4">
                 <Globe className="w-8 h-8 text-teal-600" />
-                <span className="font-heading text-xl font-bold text-slate-900">Glojourn</span>
+                <span className="font-heading text-xl font-bold text-white">Glojourn</span>
               </div>
               <CardTitle className="font-heading text-2xl">Sign In</CardTitle>
               <CardDescription>Enter your credentials to access your account</CardDescription>
@@ -97,7 +97,7 @@ const LoginPage = () => {
                     placeholder="you@example.com"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="h-12 bg-slate-50"
+                    className="h-12 bg-[rgba(15,23,42,0.6)] text-white border border-white/10 placeholder:text-slate-500 focus-visible:ring-2 focus-visible:ring-[var(--accent-teal)] focus-visible:border-[var(--accent-teal)]"
                     data-testid="login-email-input"
                   />
                 </div>
@@ -109,20 +109,20 @@ const LoginPage = () => {
                     placeholder="••••••••"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className="h-12 bg-slate-50"
+                    className="h-12 bg-[rgba(15,23,42,0.6)] text-white border border-white/10 placeholder:text-slate-500 focus-visible:ring-2 focus-visible:ring-[var(--accent-teal)] focus-visible:border-[var(--accent-teal)]"
                     data-testid="login-password-input"
                   />
                 </div>
                 <Button
                   type="submit"
-                  className="w-full h-12 bg-slate-900 hover:bg-teal-700"
+                  className="w-full h-12 bg-primary text-primary-foreground border border-[var(--accent-teal)] shadow-[0_12px_30px_-12px_rgba(20,184,166,0.65)] hover:bg-[var(--highlight-teal)] hover:border-[var(--highlight-teal)]"
                   disabled={loading}
                   data-testid="login-submit-btn"
                 >
                   {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : "Sign In"}
                 </Button>
               </form>
-              <p className="text-center text-sm text-slate-600 mt-6">
+              <p className="text-center text-sm text-slate-400 mt-6">
                 Don't have an account?{" "}
                 <Link to="/signup" className="text-teal-600 hover:text-teal-700 font-medium" data-testid="signup-link">
                   Sign up

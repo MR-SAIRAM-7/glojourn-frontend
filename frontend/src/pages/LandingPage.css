@@ -29,10 +29,11 @@ header {
 }
 
 header.scrolled {
-    background-color: rgba(11, 19, 43, 0.95);
+    background-color: rgba(11, 18, 36, 0.92);
     padding: 1rem 0;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
     backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(20, 184, 166, 0.18);
 }
 
 .nav-container {
@@ -53,7 +54,7 @@ header.scrolled {
 }
 
 .logo span {
-    color: var(--accent-gold);
+    color: var(--accent-teal);
 }
 
 nav ul {
@@ -76,7 +77,7 @@ nav a::after {
     height: 2px;
     bottom: -5px;
     left: 0;
-    background-color: var(--accent-gold);
+    background-color: var(--accent-teal);
     transition: width 0.3s;
 }
 
@@ -124,7 +125,8 @@ nav a:hover::after {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, rgba(11, 19, 43, 0.85) 0%, rgba(11, 19, 43, 0.6) 100%);
+    /* Gradient from Deepest Navy to clearer dark */
+    background: linear-gradient(135deg, rgba(11, 18, 36, 0.94) 0%, rgba(11, 18, 36, 0.78) 60%, rgba(20, 184, 166, 0.12) 100%);
     z-index: -1;
 }
 
@@ -178,7 +180,10 @@ nav a:hover::after {
  * =========================================
  */
 #services {
-    background-color: var(--off-white);
+    background-color: var(--primary-navy);
+    /* Dark background */
+    padding-top: 4rem;
+    /* Ensure padding if needed */
 }
 
 .services-grid {
@@ -188,11 +193,14 @@ nav a:hover::after {
 }
 
 .service-card {
-    background: var(--pure-white);
+    background: var(--card);
+    /* Dark Card */
     padding: 2.5rem;
     border-bottom: 3px solid transparent;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    /* Subtle border */
     transition: all 0.3s ease;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     opacity: 0;
     /* For scroll animation */
     transform: translateY(20px);
@@ -200,13 +208,14 @@ nav a:hover::after {
 
 .service-card:hover {
     transform: translateY(-10px);
-    border-bottom-color: var(--accent-gold);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    border-bottom-color: var(--accent-teal);
+    background: rgba(255, 255, 255, 0.03);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
 }
 
 .service-icon {
     font-size: 2.5rem;
-    color: var(--highlight-teal);
+    color: var(--accent-teal);
     margin-bottom: 1.5rem;
 }
 
@@ -214,7 +223,8 @@ nav a:hover::after {
     font-family: var(--font-head);
     font-size: 1.5rem;
     margin-bottom: 1rem;
-    color: var(--primary-navy);
+    color: var(--text-dark);
+    /* Light text on dark card */
 }
 
 .service-card ul {
@@ -227,28 +237,29 @@ nav a:hover::after {
     padding-left: 1.5rem;
     margin-bottom: 0.5rem;
     font-size: 0.9rem;
-    color: #666;
+    color: var(--text-light);
+    /* Muted light text */
 }
 
 .service-card li::before {
     content: '•';
-    color: var(--accent-gold);
+    color: var(--accent-teal);
     position: absolute;
     left: 0;
     font-weight: bold;
 }
 
 .learn-more {
-    color: var(--primary-navy);
+    color: var(--accent-teal);
     font-weight: 600;
     font-size: 0.9rem;
-    border-bottom: 1px solid var(--primary-navy);
+    border-bottom: 1px solid var(--accent-teal);
     padding-bottom: 2px;
 }
 
 .learn-more:hover {
-    color: var(--highlight-teal);
-    border-color: var(--highlight-teal);
+    color: var(--pure-white);
+    border-color: var(--pure-white);
 }
 
 /* * =========================================
@@ -257,8 +268,9 @@ nav a:hover::after {
  */
 #clients {
     padding: 3rem 0;
-    background: white;
-    border-bottom: 1px solid #eee;
+    background: var(--secondary);
+    /* Darker section */
+    border-bottom: 1px solid #1e293b;
 }
 
 .clients-container {
@@ -290,7 +302,7 @@ nav a:hover::after {
 .client-logo:hover {
     filter: grayscale(0%);
     opacity: 1;
-    color: var(--primary-navy);
+    color: var(--pure-white);
     transform: scale(1.05);
 }
 
@@ -318,7 +330,7 @@ nav a:hover::after {
 .testimonial-card {
     background: rgba(255, 255, 255, 0.05);
     padding: 2rem;
-    border-left: 4px solid var(--accent-gold);
+    border-left: 4px solid var(--accent-teal);
     backdrop-filter: blur(5px);
     transition: transform 0.3s;
     min-width: 300px;
@@ -333,7 +345,7 @@ nav a:hover::after {
 }
 
 .rating {
-    color: var(--accent-gold);
+    color: var(--accent-teal);
     margin-bottom: 1rem;
     display: flex;
     gap: 0.25rem;
@@ -357,7 +369,7 @@ nav a:hover::after {
     height: 50px;
     border-radius: 50%;
     object-fit: cover;
-    border: 2px solid var(--highlight-teal);
+    border: 2px solid var(--accent-teal);
 }
 
 .author-info h4 {
@@ -405,7 +417,7 @@ footer {
 }
 
 .footer-links a:hover {
-    color: var(--accent-gold);
+    color: var(--accent-teal);
     padding-left: 5px;
 }
 
@@ -438,7 +450,7 @@ footer {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(11, 19, 43, 0.8);
+    background: rgba(2, 6, 23, 0.8);
     backdrop-filter: blur(5px);
     z-index: 2000;
     display: flex;
@@ -455,7 +467,9 @@ footer {
 }
 
 .modal {
-    background: white;
+    background: var(--card);
+    /* Dark modal */
+    border: 1px solid rgba(255, 255, 255, 0.1);
     width: 90%;
     max-width: 450px;
     padding: 2.5rem;
@@ -478,13 +492,13 @@ footer {
     border: none;
     font-size: 1.5rem;
     cursor: pointer;
-    color: #666;
+    color: var(--text-light);
 }
 
 .auth-tabs {
     display: flex;
     margin-bottom: 1.5rem;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .tab-btn {
@@ -495,12 +509,12 @@ footer {
     font-family: var(--font-body);
     font-weight: 600;
     cursor: pointer;
-    color: #888;
+    color: var(--text-light);
 }
 
 .tab-btn.active {
-    color: var(--primary-navy);
-    border-bottom: 2px solid var(--primary-navy);
+    color: var(--accent-teal);
+    border-bottom: 2px solid var(--accent-teal);
 }
 
 .form-group {
@@ -516,7 +530,9 @@ footer {
 .form-group input {
     width: 100%;
     padding: 0.8rem;
-    border: 1px solid #ddd;
+    border: 1px solid #334155;
+    background: var(--secondary);
+    color: var(--pure-white);
     border-radius: 2px;
 }
 
@@ -587,7 +603,7 @@ footer {
 
 .section-header span {
     display: block;
-    color: var(--highlight-teal);
+    color: var(--accent-teal);
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 2px;

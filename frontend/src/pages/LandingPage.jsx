@@ -254,7 +254,7 @@ const LandingPage = () => {
       <section id="testimonials" aria-labelledby="testimonials-heading">
         <div className="container-custom">
           <div className="section-header reveal-on-scroll">
-            <span style={{ color: "var(--accent-gold)" }}>Success Stories</span>
+            <span style={{ color: "var(--accent-teal)" }}>Success Stories</span>
             <h2 style={{ color: "white" }}>Voices of the World</h2>
           </div>
 
@@ -297,7 +297,7 @@ const LandingPage = () => {
                     <div className="p-1">
                       <Card className="bg-white/10 border-none text-white backdrop-blur-sm">
                         <CardContent className="flex flex-col gap-4 p-6">
-                          <div className="flex gap-1 text-yellow-400">
+                          <div className="flex gap-1 text-teal-400">
                             {[...Array(5)].map((_, i) => (
                               <Star key={i} weight="fill" />
                             ))}

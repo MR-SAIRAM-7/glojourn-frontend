@@ -1,7 +1,7 @@
 /* Glojourn Custom Styles */
 
 .hero-gradient {
-  background: linear-gradient(135deg, #0B132B 0%, #1B264F 50%, #0B132B 100%);
+  background: linear-gradient(135deg, rgba(11, 18, 36, 0.92) 0%, rgba(20, 184, 166, 0.12) 45%, rgba(11, 18, 36, 0.96) 100%);
 }
 
 .glass-card {
